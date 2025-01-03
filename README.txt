@@ -80,9 +80,9 @@ npm install mongodb
     );
 
     CREATE TABLE Arduino (
-    id INT AUTO_INCREMENT PRIMARY KEY, -- Auto-incrementing ID for each record
-    message VARCHAR(255) NOT NULL,     -- Message content
-    timestamp DATETIME NOT NULL        -- Timestamp in IST
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    message VARCHAR(255) NOT NULL,     
+    timestamp DATETIME NOT NULL        
     );
      ```
 
