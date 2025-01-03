@@ -21,7 +21,7 @@ const dbMySQL = mysql.createConnection({
     host: 'host',
     user: 'user',
     password: 'password',
-    database: 'database',
+    database: 'MODEM',
     port: 3306,
 });
 
@@ -36,7 +36,7 @@ dbMySQL.connect((err) => {
 
 // MongoDB Connection Setup
 const mongoUrl = "mongodb://localhost:27017";
-const dbName = 'dbName';
+const dbName = 'Modem';
 let dbMongo;
 
 // Connect to MongoDB
