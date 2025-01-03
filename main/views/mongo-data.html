@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Data</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="shortcut icon" href="/images/modem-icon.png" />
+    <style>
+        /* Basic Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            position: relative; /* For positioning the close button */
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+            top: 10px; /* Position close button inside the modal */
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Add hover effect for the topic cells */
+        #mongoMessagesTable td {
+            cursor: pointer;
+        }
+
+        #mongoMessagesTable td:hover {
+            text-decoration: underline;
+            color: #007bff; /* Change color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sticky-header">
+        <img src="/images/database-icon.jpg" height="75" width="70" />
+        <h1>View MongoDB Data</h1>
+        <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <div id="status" class="disconnected">Status: Disconnected</div>
+        <button onclick="window.location.href='/views/front-pg.html'">Back to Dashboard</button>
+    </div>
+
+    <!-- View MongoDB Messages Panel -->
+    <div class="panel">
+        <h3>View MongoDB Messages</h3>
+        <!-- Removed the View MongoDB Messages button and Collapse Table button -->
+
+        <label for="mongoTableSizeSelect">Messages per page:</label>
+        <select id="mongoTableSizeSelect">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="All">All</option>
+        </select>
+
+        <!-- MongoDB Topic Filter -->
+        <select id="mongoTopicFilterSelect">
+            <option value="">Select Topic (MongoDB)</option>
+        </select>
+        <!-- MongoDB Date and Time Filter -->
+        <div>
+            <label for="startDateFilter">Start Date:</label>
+            <input type="date" id="startDateFilter">
+
+            <label for="startTimeFilter">Start Time:</label>
+            <input type="time" id="startTimeFilter">
+
+            <label for="endDateFilter">End Date:</label>
+            <input type="date" id="endDateFilter">
+
+            <label for="endTimeFilter">End Time:</label>
+            <input type="time" id="endTimeFilter">
+
+            <button id="applyDateTimeFilter">Apply Date/Time Filter</button>
+        </div>
+
+        <div id="mongoMessagesContainer">
+            <table id="mongoMessagesTable" style="width:100%; margin-top: 20px; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Topic</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MongoDB Download Section -->
+        <div>
+            <label for="mongoDownloadFormatSelect">Download MongoDB Data as:</label>
+            <select id="mongoDownloadFormatSelect">
+                <option value="json">JSON</option>
+                <option value="csv">CSV</option>
+                <option value="txt">TXT</option>
+            </select>
+            <button id="mongoDownloadButton">Download</button>
+        </div>
+    </div>
+
+    <!-- Modal for viewing message details -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-header">Message Details</div>
+            <div class="modal-body">
+                <textarea id="messageText" rows="10" cols="50" readonly></textarea>
+            </div>
+            <div>
+                <label for="downloadFormatSelect">Download Message as:</label>
+                <select id="downloadFormatSelect">
+                    <option value="json">JSON</option>
+                    <option value="csv">CSV</option>
+                    <option value="txt">TXT</option>
+                </select>
+                <button id="downloadMessageButton">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="/js/darkmode.js"></script>
+    <script src="/js/mongo.js"></script>
+    <script src="/js/socket.js"></script>
+
+</body>
+
+</html>

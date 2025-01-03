@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Modem Controls</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="shortcut icon" href="/images/modem-icon.png" />
+</head>
+
+<body>
+    <div class="sticky-header">
+        <img src="/images/modem-icon.png" height="75" width="70" />
+        <h1>SOC Modem Controls</h1>
+
+        <div class="redirect-container">
+            <button id="goToHomeButton" onclick="window.location.href='/views/front-pg.html'">Go to Home Page</button>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <div id="status" class="disconnected">Status: Disconnected</div>
+
+        <!-- Dropdown for MySQL / MongoDB Data View -->
+        <select id="viewDataSelect" onchange="viewDatabaseData()">
+            <option value="" disabled selected>View Database Data</option>
+            <option value="mysql">View MySQL Data</option>
+            <option value="mongo">View MongoDB Data</option>
+        </select>
+    </div>    
+
+    <div class="container">
+        <div class="container">
+            <!-- Control Panel -->
+            <div class="panel">
+                <h2 style="margin: 0;">Controls <img src="/images/controls-icon.jpg" height="30" width="30" style="margin-left: 10px;"/></h2>            
+                <div class="controls">
+                    <div>
+                        <h3><img src="/images/subscribe-icon.png" height="25" width="25" style="margin-right: 10px; margin-top: 10px;"/> Subscribe to a Topic</h3>
+                        <select id="topicSelect">
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="SOC/2E004200105053354D323420">SOC/2E004200105053354D323420</option>
+                            <option value="SOC/250038001047373531373930">SOC/250038001047373531373930</option>
+                            <option value="SOC/25001A001047373531373930">SOC/25001A001047373531373930</option>
+                            <option value="soc/feeds/Solvierone">soc/feeds/Solvierone</option>
+                        </select>
+                        <button id="subscribeButton">Subscribe</button>
+                    </div>
+    
+                    <div>
+                        <h3><img src="/images/create-icon.png" height="25" width="25" style="margin-right: 10px; margin-top: 10px;"/> Create a Topic</h3>
+                        <input type="text" id="createTopic" placeholder="Enter New Topic">
+                        <button id="createTopicButton">Create Topic</button>
+                    </div>
+    
+                    <div>
+                        <h3><img src="/images/publish-icon.webp" height="25" width="25" style="margin-right: 10px; margin-top: 10px;"/> Publish a Message</h3>
+                        <select id="publishTopicSelect">
+                            <option value="" disabled selected>Select a topic</option>
+                        </select>
+                        <input type="text" id="publishMessage" placeholder="Enter Message">
+                        
+                        <!-- Store in Database Checkbox -->
+                        <label>
+                            <input type="checkbox" id="storeMessageCheckbox" />
+                            Store message in database
+                        </label>                                                          
+                        
+                        <button id="publishButton">Publish</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Messages Panel -->
+            <div class="messages-panel">
+                <div class="panel latest-messages">
+                    <h2>Latest Messages</h2>
+                    <select id="topicFilterSelect">
+                        <option value="">Filter by Topic</option>
+                    </select>
+                    <ul id="latestMessages"></ul>
+                </div>
+    
+                <div class="panel older-messages">
+                    <h2>Older Messages</h2>
+                    <ul id="olderMessages"></ul>
+                </div>
+            </div>
+    
+            <!-- Download Messages Panel -->
+            <div class="panel">
+                <h3>Download Messages <img src="/images/download-icon.jpg" height="30" width="30" style="margin-left: 10px;"/></h3>
+                <select id="downloadTopicSelect">
+                    <option value="" selected>All Topics</option>
+                </select>
+                <div class="flex-buttons">
+                    <select id="downloadFormatSelect">
+                        <option value="">Select Format</option>
+                        <option value="json">Download Data as JSON</option>
+                        <option value="csv">Download Data as CSV</option>
+                        <option value="txt">Download Data as TXT</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/darkmode.js"></script>
+    <script src="/js/socket.js"></script>
+    <script src="/js/download.js"></script>
+</body>
+
+</html>

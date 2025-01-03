@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Modem Dashboard</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="shortcut icon" href="/images/modem-icon.png" />
+    <style>
+        .status-indicators {
+            margin-bottom: 20px;
+        }
+
+        .indicator-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .indicator {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .grey {
+            background-color: grey;
+        }
+
+        /* Style for the chart container */
+        .chart-container {
+            width: 80%;
+            height: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sticky-header">
+        <img src="/images/modem-icon.png" height="75" width="70" />
+        <h1>SOC Modem Dashboard</h1>
+
+        <div class="redirect-container">
+            <button id="goToIndexButton" onclick="window.location.href='/views/index.html'">Go to Controls Page</button>
+        </div>
+
+        <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <div id="status" class="disconnected">Status: Disconnected</div>
+
+        <select id="viewDataSelect" onchange="viewDatabaseData()">
+            <option value="" disabled selected>View Database Data</option>
+            <option value="mysql">View MySQL Data</option>
+            <option value="mongo">View MongoDB Data</option>
+            <option value="arduino">View Arduino Data</option>
+        </select>
+    </div>
+
+    <div class="status-indicators">
+        <h2>Status Indicators</h2>
+        <div class="indicator-container">
+            <div id="DI1-status" class="indicator">DI1</div>
+            <div id="DI2-status" class="indicator">DI2</div>
+            <div id="DO1-status" class="indicator">DO1</div>
+        </div>
+    </div>
+
+    <!-- Live Status Table -->
+    <div class="status-table-container">
+        <h2>Live Status [SOC/25001A001047373531373930 (IO)]</h2>
+        <table id="statusTable">
+            <thead>
+                <tr>
+                    <th>UID</th>
+                    <th>AI1</th>
+                    <th>AI2</th>
+                    <th>DI1</th>
+                    <th>DI2</th>
+                    <th>DO1</th>
+                    <th>Coordinates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be populated here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- AI1 & AI2 Graph -->
+    <div class="chart-container">
+        <canvas id="aiChart"></canvas>
+    </div>
+
+    <script src="/js/front-pg.js"></script>
+    <script src="/js/darkmode.js"></script>
+    <script src="/js/socket.js"></script>
+</body>
+
+</html>

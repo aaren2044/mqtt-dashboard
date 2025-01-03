@@ -1,0 +1,385 @@
+/* Light Mode Default */
+:root {
+    --background-color: #f4f5f7;
+    --text-color: #333;
+    --header-bg-color: #ffffff;
+    --panel-bg-color: #fff;
+    --button-bg-color: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-bg-color: #0056b3;
+    --status-bg-color: #f0f0f0;
+    --link-color: #007bff;
+    --input-bg-color: #e6f7ff;
+    --input-border-color: #007bff;
+    --input-focus-bg-color: #dff4ff;
+    --message-bg-color: #f1f8ff;
+    --message-border-color: #007bff;
+    --message-text-color: #444;
+    --message-time-color: #777;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --header-bg-color: #333333;
+    --panel-bg-color: #222222;
+    --button-bg-color: #444444;
+    --button-text-color: #ffffff;
+    --button-hover-bg-color: #555555;
+    --status-bg-color: #444444;
+    --link-color: #007bff;
+    --input-bg-color: #333333;
+    --input-border-color: #444444;
+    --input-focus-bg-color: #555555;
+    --message-bg-color: #333333;
+    --message-border-color: #007bff;
+    --message-text-color: #ddd;
+    --message-time-color: #bbb;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 40px;
+    color: var(--text-color);
+    padding-top: 120px; /* Adjust based on the height of your sticky header */
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+#status {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--status-bg-color);
+    padding: 5px 10px;
+}
+
+.connected {
+    color: green;
+}
+
+.disconnected {
+    color: red;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.panel {
+    background: var(--panel-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.panel h2,
+.panel h3 {
+    margin-top: 0;
+    color: var(--link-color);
+    font-size: 1.6rem;
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.controls select,
+.controls input,
+.controls button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.controls select,
+.controls button {
+    width: 48%;
+}
+
+/* Buttons Styling */
+button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.controls button {
+    width: auto;
+}
+
+.controls input {
+    margin-bottom: 5px;
+}
+
+/* Dropdown Styling */
+select {
+    font-size: 1.2rem;
+    background-color: var(--input-bg-color);
+    border: 2px solid var(--input-border-color);
+    border-radius: 8px;
+    color: var(--link-color);
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    background-color: var(--input-focus-bg-color);
+}
+
+select option {
+    padding: 10px;
+}
+
+#topicFilterSelect,
+#publishTopicSelect,
+#topicSelect {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 14px;
+}
+
+/* Unified Header Styling */
+h2,
+h3 {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    border-bottom: 2px solid var(--link-color);
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.message-item {
+    background: var(--message-bg-color);
+    border-left: 5px solid var(--message-border-color);
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--message-text-color);
+}
+
+.message-topic {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.message-content {
+    margin: 10px 0;
+    color: var(--message-text-color);
+}
+
+.message-time {
+    font-size: 0.85rem;
+    color: var(--message-time-color);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--panel-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px; 
+    text-align: left;
+    border-bottom: 1px solid var(--input-border-color);
+}
+
+th {
+    background-color: var(--header-bg-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+td {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+tr:hover {
+    background-color: var(--input-focus-bg-color);
+}
+
+tr:nth-child(even) {
+    background-color: var(--status-bg-color);
+}
+
+/* Sticky Header Styling */
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-color);
+    padding: 10px 20px;
+    z-index: 1000; /* Ensure it appears above other content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.sticky-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.sticky-header button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.sticky-header button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.sticky-header #status {
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: var(--status-bg-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+/* Latest and Older Messages Layout */
+.messages-panel {
+    display: flex;
+    gap: 30px; /* Adds space between the panels */
+    margin-top: 20px;
+}
+
+.panel {
+    flex: 1; /* Each panel takes equal width */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--panel-bg-color);
+    margin: 0; /* Ensure no extra margin is added */
+}
+
+.latest-messages {
+    background-color: #eaf7e8; /* Light greenish background for latest messages */
+}
+
+.older-messages {
+    background-color: #f7eaf7; /* Light pinkish background for older messages */
+}
+
+@media (max-width: 768px) {
+    .messages-panel {
+        flex-direction: column; /* Stack the panels vertically on smaller screens */
+    }
+}
+
+/* Additional Styling for MongoDB and MySQL Containers */
+#mysqlMessagesContainer,
+#mongoMessagesContainer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--panel-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#mysqlMessagesContainer h2,
+#mongoMessagesContainer h2 {
+    font-size: 1.8rem;
+    color: var(--link-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#mysqlMessagesContainer h3,
+#mongoMessagesContainer h3 {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#collapseMySQLTableButton,
+#collapseMongoDBTableButton {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#collapseMySQLTableButton:hover,
+#collapseMongoDBTableButton:hover {
+    background-color: #0056b3;
+}
+
+#tableSizeSelect {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+/* Store Message Checkbox Alignment */
+.controls label {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between checkbox and text */
+    font-size: 1rem;
+}
+

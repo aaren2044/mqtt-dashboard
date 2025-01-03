@@ -1,0 +1,84 @@
+paste in mqttServer.js to generate dummy data
+
+// Set an interval to publish messages every 10 seconds
+// setInterval(() => {
+//     const topic = "SOC/2E004200105053354D323420";
+//     const message = generateRandomMessageMySQL(); // Call the MySQL-specific message function
+
+//     const messageString = JSON.stringify(message);
+
+//     if (typeof messageString === 'string') {
+//         mqttClient.publish(topic, messageString, (err) => {
+//             if (err) {
+//                 console.error(`Error publishing to topic ${topic}:`, err);
+//             } else {
+//                 console.log(`Message published to ${topic}:`, messageString);
+
+//                 // Store this message ONLY in MySQL
+//                 insertMessageToDatabaseMySQL(topic, messageString);
+//             }
+//         });
+//     } else {
+//         console.error('Message is not a string:', messageString);
+//     }
+// }, 10000);  // Interval set to 10000ms (10 seconds)
+
+// Set an interval to publish messages every 10 seconds
+// setInterval(() => {
+//     const topic = "SOC/250038001047373531373930";  // New topic for MongoDB messages
+//     const message = generateRandomMessageMongo(); // Call the MongoDB-specific message function
+
+//     const messageString = JSON.stringify(message);
+
+//     if (typeof messageString === 'string') {
+//         mqttClient.publish(topic, messageString, (err) => {
+//             if (err) {
+//                 console.error(`Error publishing to topic ${topic}:`, err);
+//             } else {
+//                 console.log(`Message published to ${topic}:`, messageString);
+
+//                 // Store this message ONLY in MongoDB
+//                 insertMessageToDatabaseMongo(topic, messageString);
+//             }
+//         });
+//     } else {
+//         console.error('Message is not a string:', messageString);
+//     }
+// }, 10000);  // Interval set to 10000ms (10 seconds)
+
+// Function to generate random message for MySQL
+// function generateRandomMessageMySQL() {
+//     return {
+//         TYPE: "MODBUS",
+//         ID: "270029000D5048574B353720",
+//         DT: Math.floor(Math.random() * 10000000000).toString(), // Random timestamp
+//         QNO: Math.floor(Math.random() * 10), // Random QNO between 0 and 9
+//         DATA: {
+//             kWh: Math.random() * 100000000,  // Random kWh
+//             kVAh: Math.random() * 100000000  // Random kVAh
+//         }
+//     };
+// }
+
+// Function to generate random message for MongoDB
+// function generateRandomMessageMongo() {
+//     return {
+//         TYPE: "MODBUS",
+//         ID: "250038001047373531373930", // Static ID or can be randomized if needed
+//         DT: Math.floor(Math.random() * 10000000000).toString(), // Random timestamp
+//         QNO: Math.floor(Math.random() * 10), // Random QNO between 0 and 9
+//         DATA: {
+//             V1: (Math.random() * 1000).toFixed(6), // Random voltage V1
+//             V2: (Math.random() * 1000).toFixed(6), // Random voltage V2
+//             V3: (Math.random() * 1000).toFixed(6), // Random voltage V3
+//             Vavg: (Math.random() * 1000).toFixed(6), // Random average voltage
+//             L1: (Math.random() * 100).toFixed(2), // Random L1 value
+//             L2: (Math.random() * 100).toFixed(2), // Random L2 value
+//             L3: (Math.random() * 100).toFixed(2), // Random L3 value
+//             QA: (Math.random() * 1).toFixed(4), // Random QA value between 0 and 1
+//             KT: Math.floor(Math.random() * 1000000), // Random KT value
+//             KA: Math.floor(Math.random() * 1000000), // Random KA value
+//             FQ: (Math.random() * 50).toFixed(4) // Random frequency value
+//         }
+//     };
+// }
