@@ -116,5 +116,7 @@ function viewDatabaseData() {
         window.location.href = '/views/mysql-data.html';
     } else if (selectedValue === 'mongo') {
         window.location.href = '/views/mongo-data.html';
+    } else if (selectedValue === 'arduino') {
+        window.location.href = '/views/arduino.html';
     }
 }
