@@ -18,10 +18,10 @@ app.use(express.static('main')); // Serve static files from the "main" directory
 
 // MySQL Database client setup
 const dbMySQL = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'aaren',
-    database: 'MODEM',
+    host: 'host',
+    user: 'user',
+    password: 'password',
+    database: 'database',
     port: 3306,
 });
 
@@ -36,7 +36,7 @@ dbMySQL.connect((err) => {
 
 // MongoDB Connection Setup
 const mongoUrl = "mongodb://localhost:27017";
-const dbName = 'Modem';
+const dbName = 'dbName';
 let dbMongo;
 
 // Connect to MongoDB
